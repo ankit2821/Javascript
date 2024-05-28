@@ -39,6 +39,10 @@ const myArray = [
   },
 ];
 
-myArray.forEach((member) => {
-  console.log(member.name);
+// myArray.forEach((member) => {
+//   console.log(member.name);
+// });
+
+myArray.forEach((member, index, arr) => {
+  console.log(member.name, "index is: ", index, "arr: ", arr);
 });
