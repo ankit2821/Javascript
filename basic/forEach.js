@@ -1,5 +1,18 @@
 const arr = ["Ankit", "Nehal", "Pratik", "Shubham", "mrunal", "rudhi"];
 
+// ++++++      Differencce between forEach and Map         ------------------
+const forEachResult = arr.forEach((item) => {
+  return "forEach", item;
+});
+
+console.log(forEachResult);
+
+const mapResult = arr.map((item) => {
+  return "map", item;
+});
+
+console.log(mapResult);
+
 // ++++++++++++++          with normal function            +++++++++++++++++++++
 // arr.forEach(function (name) {
 //   console.log(name);
@@ -43,6 +56,6 @@ const myArray = [
 //   console.log(member.name);
 // });
 
-myArray.forEach((member, index, arr) => {
-  console.log(member.name, "index is: ", index, "arr: ", arr);
-});
+// myArray.forEach((member, index, arr) => {
+//   console.log(member.name, "index is: ", index, "arr: ", arr);
+// });

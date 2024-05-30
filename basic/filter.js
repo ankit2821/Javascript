@@ -31,5 +31,5 @@ const arr = [
   },
 ];
 
-const mobiles = arr.filter((mobile) => mobile.date < 2023);
+const mobiles = arr.filter((mobile) => mobile.date > 2022);
 console.log(mobiles);
