@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="background-color: black; color: white">
+    <ul class="language">
+      <li>Javascript</li>
+    </ul>
+  </body>
+  <script>
+    // +++++++++++             this approach traverse the whole tree                 ++++++++++++++++
+    function addLanguage(...languageName) {
+      const li = document.createElement("li");
+      li.innerHTML = languageName;
+      document.querySelector(".language").appendChild(li);
+    }
+    addLanguage("python", "qwerty");
+    // ++++++            optimized approach           ++++++++++++++++++
+    function addOptimizedWay(languageName) {
+      const li = document.createElement("li");
+      li.appendChild(document.createTextNode(languageName));
+      document.querySelector(".language").appendChild(li);
+    }
+
+    addOptimizedWay("qwerty");
+    addOptimizedWay("TypeScript");
+    addOptimizedWay("Java");
+
+    // ++++++++++        to replace           +++++++++++
+    const thirdLanguage = document.querySelector("li:nth-child(3)");
+    const newLi = document.createElement("li");
+    newLi.textContent = "Ankit";
+    thirdLanguage.replaceWith(newLi);
+
+    // ++++++++++    remove         ++++++++++++
+    fourthLanguage = document.querySelector("li:nth-child(4)");
+    fourthLanguage.remove();
+  </script>
+</html>
