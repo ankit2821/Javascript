@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API XML</title>
+    <style>
+      .card {
+        border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        width: 30%;
+      }
+      .image {
+        border: 1px solid green;
+        height: 25%;
+        width: 25%;
+        padding: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Old method of API handling</h1>
+    <button id="details">Get details</button>
+    <div class="card" id="card">
+      <h1 id="noDataMessage">No data found</h1>
+      <img class="image" id="image" src="" style="display: none" />
+      <h3 id="name"></h3>
+      <h4 id="bio"></h4>
+      <h5 id="location"></h5>
+    </div>
+  </body>
+  <script>
+    const requestUrl = "https://api.github.com/users/ankit2821";
+    const button = document.getElementById("details");
+    const card = document.getElementById("card");
+    const noDataMessage = document.getElementById("noDataMessage");
+
+    button.addEventListener("click", function (e) {
+      const hrp = new XMLHttpRequest();
+      hrp.open("GET", requestUrl);
+
+      hrp.onreadystatechange = function () {
+        if (hrp.readyState == 4 && hrp.status == 200) {
+          const data = JSON.parse(this.responseText);
+
+          document.getElementById("name").innerHTML =
+            data.name || "Name not available";
+          document.getElementById("bio").innerHTML =
+            data.bio || "Bio not available";
+          document.getElementById("location").innerHTML =
+            data.location || "Location not available";
+          const img = document.getElementById("image");
+          img.src = data.avatar_url || "";
+          img.style.display = "block";
+
+          noDataMessage.style.display = "none";
+        } else if (hrp.readyState == 4) {
+          noDataMessage.innerHTML = "Failed to fetch data.";
+        }
+      };
+
+      hrp.send();
+    });
+  </script>
+</html>
